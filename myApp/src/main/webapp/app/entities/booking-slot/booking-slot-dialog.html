@@ -1,0 +1,68 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myBookingSlotLabel">Create or edit a Booking Slot</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.bookingSlot.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.bookingSlot.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                    ng-model="vm.bookingSlot.description"
+                    ng-minlength="5" ng-maxlength="50"/>
+            <div ng-show="editForm.description.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.description.$error.minlength" translate-value-min="5">
+                    This field is required to be at least 5 characters.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.description.$error.maxlength">
+                    This field cannot be longer than 50 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_fromDate">From Date</label>
+                <div class="input-group">
+                    <input id="field_fromDate" type="text" class="form-control" name="fromDate" datetime-picker="{{dateformat}}" ng-model="vm.bookingSlot.fromDate" is-open="vm.datePickerOpenStatus.fromDate"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('fromDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_toDate">To Date</label>
+                <div class="input-group">
+                    <input id="field_toDate" type="text" class="form-control" name="toDate" datetime-picker="{{dateformat}}" ng-model="vm.bookingSlot.toDate" is-open="vm.datePickerOpenStatus.toDate"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('toDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+
+        <div class="form-group">
+            <label for="field_parkingSpace">Parking Space</label>
+            <select class="form-control" id="field_parkingSpace" name="parkingSpace" ng-model="vm.bookingSlot.parkingSpace" ng-options="parkingSpace as parkingSpace.name for parkingSpace in vm.parkingspaces track by parkingSpace.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,36 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "parkingSpace",
+            "otherEntityName": "parkingSpace",
+            "otherEntityField": "name"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "description",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": 5,
+            "fieldValidateRulesMaxlength": 50
+        },
+        {
+            "fieldName": "fromDate",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "toDate",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "changelogDate": "20170206173153",
+    "entityTableName": "booking_slot",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl"
+}

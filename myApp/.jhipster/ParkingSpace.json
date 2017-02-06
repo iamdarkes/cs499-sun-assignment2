@@ -1,0 +1,45 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "availabilitySlots",
+            "otherEntityName": "availabilitySlot",
+            "otherEntityRelationshipName": "parkingSpace"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "bookingSlots",
+            "otherEntityName": "bookingSlot",
+            "otherEntityRelationshipName": "parkingSpace"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": 5,
+            "fieldValidateRulesMaxlength": 50
+        },
+        {
+            "fieldName": "expiration",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "changelogDate": "20170206173153",
+    "entityTableName": "parking_space",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl"
+}

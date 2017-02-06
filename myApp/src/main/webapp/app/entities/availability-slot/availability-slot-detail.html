@@ -1,0 +1,39 @@
+
+<div>
+    <h2><span>Availability Slot</span> {{vm.availabilitySlot.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row jh-entity-details">
+        <dt><span>Description</span></dt>
+        <dd>
+            <span>{{vm.availabilitySlot.description}}</span>
+        </dd>
+        <dt><span>Availability Reason</span></dt>
+        <dd>
+            <span>{{vm.availabilitySlot.availabilityReason}}</span>
+        </dd>
+        <dt><span>From Date</span></dt>
+        <dd>
+            <span>{{vm.availabilitySlot.fromDate | date:'medium'}}</span>
+        </dd>
+        <dt><span>To Date</span></dt>
+        <dd>
+            <span>{{vm.availabilitySlot.toDate | date:'medium'}}</span>
+        </dd>
+        <dt><span>Parking Space</span></dt>
+        <dd>
+            <a ui-sref="parking-space-detail({id:vm.availabilitySlot.parkingSpace.id})">{{vm.availabilitySlot.parkingSpace.name}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="availability-slot-detail.edit({id:vm.availabilitySlot.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>
